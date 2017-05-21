@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Computer Language Directory</title>
+<head>
+    	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+	<style>
+		body
+		{
+			font-family: 'Raleway', sans-serif;
+			-webkit-opacity: 0;
+			-moz-opacity: 0;
+			opacity: 0;
+			-webkit-transition: all 2s ease;
+			-moz-transition: all 2s ease;
+			-ms-transition: all 2s ease;
+			-o-transition: all 2s ease;
+			transition: all 2s ease;
+		}
+
+		.body2
+		{
+			font-family: 'Raleway', sans-serif;
+			-webkit-opacity: 1;
+			-moz-opacity: 1;
+			opacity: 1;
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			-o-transition: all 1s ease;
+			transition: all 1s ease;
+		}
+		
+		.upperPart
+		{
+			background: #4D7A97;
+			padding-bottom: 20px;
+		}
+
+		.searchTable
+		{
+			background: #DEE3E9;
+		}
+
+		.searchTable td
+		{
+			padding: 5px;
+		}
+
+		.lowerPart
+		{
+			padding-top: 20px;
+		}
+
+		#resultTable
+		{
+			border: 1px solid #F8981D;
+		}
+
+		#resultTable td
+		{
+			padding: 5px;
+		}
+
+		.tableHeaders
+		{
+			background: #F8981D;
+			color: white;
+			font-weight: bold;
+		}
+		
+		.even
+		{
+			background: #DDDDDD;
+		}
+
+		.odd
+		{
+			background: #FFFFFF;
+		}
+		
+		.resultTimeSpan
+		{
+			text-align: left;
+			font-style: italic;
+			color: #888888;
+			padding-bottom: 10px;
+		}
+
+		.top 
+		{
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 1rem;
+			background-color: #000000;
+			color: white;
+			text-align: center;
+		}
+
+		.easeIn
+		{
+			-webkit-opacity: 1.0;
+			-moz-opacity: 1.0;
+			opacity: 1.0;
+			-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+			-ms-transition: all 1s ease;
+			-o-transition: all 1s ease;
+			transition: all 1s ease;
+		}
+
+		.disappear
+		{
+			-webkit-opacity: 0;
+			-moz-opacity: 0;
+			opacity: 0;
+			-webkit-transition: all 0s ease;
+			-moz-transition: all 0s ease;
+			-ms-transition: all 0s ease;
+			-o-transition: all 0s ease;
+			transition: all 0s ease;
+
+			visibility: hidden;
+		}
+		
+		.nameLink
+		{
+			color: #23527C;
+			cursor: pointer;
+		}
+
+		.nameLink:hover
+		{
+			text-decoration: underline;
+		}
+	</style>
+	<script>
+		function appear()
+		{
+			document.getElementById("body").className = "body2";
+		}
+	</script>
+</head>
+<body id="body" onload="appear();">
+
+<div ng-app="root" ng-controller="lang">
+	<div class="top">
+		Developed by <a href="https://in.linkedin.com/in/tushar-sikand-982399a" target="_blank">Tushar Sikand</a> for 
+		<a href="http://devv.it" target="_blank">DEVV</a>. View code documentation <a href="/languageSearch/javadocs/index.html" target="_blank">here</a>.
+	</div>
+	<div class="container upperPart">
+		<center>
+			<h2 style="color: white;">Computer Language Directory</h2>
+			<form ng-submit="search()">
+				<table class="searchTable">
+					<tr>
+						<td>
+							<input type="text" class="form-control" ng-model="searchTerm" placeholder="Input name, type or designer" size="50">
+						</td>
+						<td>
+							&nbsp;&nbsp;
+						</td>
+						<td>
+							<button type="submit" class="btn btn-default btn-sm">
+							  <span class="glyphicon glyphicon-search"></span> Search 
+							</button>
+						</td>
+					</tr>
+				</table>
+
+		</center>
+	</div>
+	
+	<div class="container lowerPart">		
+		<center>
+			<span class="resultTimeSpan">{{resultTime}}</span>
+			<table class="disappear" id="resultTable">
+				<thead>
+					<tr class="tableHeaders">
+						<td>#</td>
+						<td>Name</td>
+						<td>Type</td>
+						<td>Designed By</td>
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr ng-repeat="language in languages"
+					ng-class-odd="'odd'" ng-class-even="'even'">
+						<td>{{$index + 1}}</td>
+						<td>
+							<span class="nameLink" onclick="openWikiLink(event.target.innerHTML);">{{language["Name"]}}</span>
+						</td>
+						<td>{{language["Type"]}}</td>
+						<td>{{language["Designed by"]}}</td>
+					</tr>
+				</tbody>
+
+			</table>
+			<span id="noResults" class="disappear" style="color: #888888; font-style: italic">
+				<h4>(No results found)</h4>
+			</span>
+		</center>
+	</div>
+</div>
+
+<script>
+	var app = angular.module("root", []);
+
+	 app.controller("lang", ["$scope", "$http", function ($scope, $http) 
+	 {
+		//Wake-up call for the service
+		$http.get('/languageSearch/rest/search/1')
+			.then(console.log("Service is available"));
+
+		$scope.search = function () 
+		{
+			if(! $scope.searchTerm)
+				return;
+
+			var startTimeInMillis = new Date().getTime();
+
+			$http.get('/languageSearch/rest/search/' + $scope.searchTerm)
+				.then(function(response) 
+				{
+					$scope.languages = response.data;
+					$scope.resultTime = ((new Date().getTime() - startTimeInMillis)/1000).toPrecision(2)
+					+ " seconds for searching '" + $scope.searchTerm + "'";
+
+					if(response.data.length == 0)
+					{
+						document.getElementById("resultTable").className = "disappear";
+						document.getElementById("noResults").className = "easeIn";
+					}
+					else
+					{
+						document.getElementById("resultTable").className = "easeIn";
+						document.getElementById("noResults").className = "disappear";
+					}
+				});
+		}
+	 }]);
+
+	function openWikiLink(name)
+	{
+		console.log("Opening Wiki page for " + name + "...");
+		window.open("https://en.wikipedia.org/wiki/" + name);
+	}
+</script>
+
+</body>
+</html>
