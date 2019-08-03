@@ -1,15 +1,11 @@
 var prefix = "https://cosplayerashley.blogspot.com/p/";
 var url = window.location.href;
-alert(url);
+var urlObject = new URL(url);
+var suffix = urlObject.searchParams.get("suffix");
 
-if (typeof handle === 'undefined') 
+if (typeof handle === 'undefined' && suffix != null) 
 {
-     var handle = "";
-    
-     if(url.indexOf(prefix) > -1)
-     {
-          handle = url.replace(prefix, "").replace(".html", "");
-     }
+     var handle = suffix;
 }
 
 alert(handle);
