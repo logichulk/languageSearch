@@ -22,12 +22,12 @@ if(foundIndex > -1)
 	nextlink1 = document.getElementById("nextlink1");
 	nextlink2 = document.getElementById("nextlink2");
 
-	i(nextlink1 != null)
+	if(nextlink1 != null)
 	{
 		nextlink1.href = nextlink1.href.replace("${handle}", handle);
 	}
 
-	i(nextlink2 != null)
+	if(nextlink2 != null)
 	{
 		nextlink2.href = nextlink2.href.replace("${handle}", handle);
 	}
