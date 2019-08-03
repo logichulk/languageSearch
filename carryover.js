@@ -19,8 +19,8 @@ if(foundIndex > -1)
 {
 	handle = url.replace(prefix, "").replace(".html", "");
 
-	nextlink1 = document.getElementById("nextlink1").href;
-	nextlink2 = document.getElementById("nextlink2").href;
+	nextlink1 = document.getElementById("nextlink1");
+	nextlink2 = document.getElementById("nextlink2");
 
 	i(nextlink1 != null)
 	{
