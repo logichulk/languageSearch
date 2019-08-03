@@ -8,8 +8,6 @@ if (typeof handle === 'undefined' && suffix != null)
      var handle = suffix;
 }
 
-alert(handle);
-
 var source = document.getElementsByTagName('html')[0].innerHTML;
 var foundIndex = source.indexOf("favourite Cosplayer now in a short story!");
 
