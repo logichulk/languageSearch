@@ -6,7 +6,7 @@ if (typeof handle === 'undefined')
 {
      var handle = "";
     
-     if(url.indexof(prefix) > -1)
+     if(url.indexOf(prefix) > -1)
      {
           handle = url.replace(prefix, "").replace(".html", "");
      }
