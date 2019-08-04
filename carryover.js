@@ -11,6 +11,8 @@ if (typeof handle === 'undefined' && suffix != null)
 var source = document.getElementsByTagName('html')[0].innerHTML;
 document.getElementsByTagName('html')[0].innerHTML = source.replace("${handle}", handle);
 
+console.log("Replaced with " + handle);
+
 // var foundIndex = source.indexOf("favourite Cosplayer now in a short story!");
 
 // if(foundIndex > -1)
