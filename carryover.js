@@ -37,10 +37,22 @@ var url = "https://www.instagram.com/" + handle + "/?__a=1";
 
 $.getJSON(url, function(response) 
 {
+    var full_name = document.getElementById("full_name");
+    var about = document.getElementById("about");
     var profile_picture = document.getElementById("profile_picture");
     var profile_pic_url_hd = document.getElementById("profile_picture_hd");
+      
+    console.log(response);
+ 
+    if(full_name != null && typeof response.graphql.user.full_name !== 'undefined')
+    {
+        full_name.innerHTML = response.graphql.user.full_name;
+    }
      
-console.log(response);    
+    if(about != null && typeof response.graphql.user.biography !== 'undefined')
+    {
+        about.innerHTML = response.graphql.user.biography;
+    }
 
     if(profile_picture != null && typeof response.graphql.user.profile_pic_url !== 'undefined')
     {
@@ -50,5 +62,7 @@ console.log(response);
     if(profile_pic_url_hd != null && typeof response.graphql.user.profile_pic_url_hd !== 'undefined')
     {
         profile_pic_url_hd.src = response.graphql.user.profile_pic_url_hd;
-    }     
+    }
+     
+     biography
 });
