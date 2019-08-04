@@ -63,6 +63,22 @@ $.getJSON(url, function(response)
     {
         profile_pic_url_hd.src = response.graphql.user.profile_pic_url_hd;
     }
-     
-     biography
 });
+
+// Poster logic
+const poster = document.getElementById("poster");
+
+function changeImg(id)
+{
+    var inHTML = document.getElementById(id).innerHTML;    
+    poster.innerHTML = inHTML;
+}
+
+if(poster != null)
+{
+     for(var i = 3; i >= 1; i --)
+     {
+          const id = "p" + i.toString();
+          setTimeout(function(){ changeImg(id); }, (3 - i) * 3000);
+     }
+}
