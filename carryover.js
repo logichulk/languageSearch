@@ -38,11 +38,17 @@ var url = "https://www.instagram.com/" + handle + "/?__a=1";
 $.getJSON(url, function(response) 
 {
     var profile_picture = document.getElementById("profile_picture");
-
+    var profile_pic_url_hd = document.getElementById("profile_picture_hd");
+     
 console.log(response);    
 
     if(profile_picture != null && typeof response.graphql.user.profile_pic_url !== 'undefined')
     {
         profile_picture.src = response.graphql.user.profile_pic_url;
     }
+    
+    if(profile_pic_url_hd != null && typeof response.graphql.user.profile_pic_url_hd !== 'undefined')
+    {
+        profile_pic_url_hd.src = response.graphql.user.profile_pic_url_hd;
+    }     
 });
