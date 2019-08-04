@@ -46,7 +46,7 @@ $.getJSON(url, function(response)
  
     if(full_name != null && typeof response.graphql.user.full_name !== 'undefined')
     {
-        full_name.innerHTML = response.graphql.user.full_name;
+        full_name.innerHTML = response.graphql.user.full_name.toUpperCase();
     }
      
     if(about != null && typeof response.graphql.user.biography !== 'undefined')
