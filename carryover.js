@@ -9,22 +9,24 @@ if (typeof handle === 'undefined' && suffix != null)
 }
 
 var source = document.getElementsByTagName('html')[0].innerHTML;
-var foundIndex = source.indexOf("favourite Cosplayer now in a short story!");
+source.replace("${handle}", handle);
 
-if(foundIndex > -1)
-{
-	handle = url.replace(prefix, "").replace(".html", "");
+// var foundIndex = source.indexOf("favourite Cosplayer now in a short story!");
 
-	nextlink1 = document.getElementById("nextlink1");
-	nextlink2 = document.getElementById("nextlink2");
+// if(foundIndex > -1)
+// {
+// 	handle = url.replace(prefix, "").replace(".html", "");
 
-	if(nextlink1 != null)
-	{
-		nextlink1.href = nextlink1.href.replace("${handle}", handle);
-	}
+// 	nextlink1 = document.getElementById("nextlink1");
+// 	nextlink2 = document.getElementById("nextlink2");
 
-	if(nextlink2 != null)
-	{
-		nextlink2.href = nextlink2.href.replace("${handle}", handle);
-	}
-}
+// 	if(nextlink1 != null)
+// 	{
+// 		nextlink1.href = nextlink1.href.replace("${handle}", handle);
+// 	}
+
+// 	if(nextlink2 != null)
+// 	{
+// 		nextlink2.href = nextlink2.href.replace("${handle}", handle);
+// 	}
+// }
