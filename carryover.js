@@ -9,7 +9,7 @@ if (typeof handle === 'undefined' && suffix != null)
 }
 
 var source = document.getElementsByTagName('html')[0].innerHTML;
-source.replace("${handle}", handle);
+document.getElementsByTagName('html')[0].innerHTML = source.replace("${handle}", handle);
 
 // var foundIndex = source.indexOf("favourite Cosplayer now in a short story!");
 
