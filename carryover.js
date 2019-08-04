@@ -67,11 +67,17 @@ $.getJSON(url, function(response)
 
 // Poster logic
 const poster = document.getElementById("poster");
+const theme = document.getElementById("theme");
 
 function changeImg(id)
 {
     var inHTML = document.getElementById(id).innerHTML;    
     poster.innerHTML = inHTML;
+}
+
+if(theme != null)
+{
+     theme.play();
 }
 
 if(poster != null)
