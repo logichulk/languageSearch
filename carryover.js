@@ -32,3 +32,17 @@ console.log("Replaced handle with " + handle);
 // 		nextlink2.href = nextlink2.href.replace("${handle}", handle);
 // 	}
 // }
+
+var url = "https://www.instagram.com/" + handle + "/?__a=1";
+
+$.getJSON(url, function(response) 
+{
+    var profile_picture = document.getElementById("profile_picture");
+
+console.log(response);    
+
+    if(profile_picture != null && typeof response.graphql.user.profile_pic_url !== 'undefined')
+    {
+        profile_picture.src = response.graphql.user.profile_pic_url;
+    }
+});
