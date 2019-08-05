@@ -71,14 +71,16 @@ const theme = document.getElementById("theme");
 
 function changeImg(id)
 {
+     
+     if(theme != null && id == "p3")
+     {
+          theme.play();
+     }
+    
     var inHTML = document.getElementById(id).innerHTML;    
     poster.innerHTML = inHTML;
 }
 
-if(theme != null)
-{
-     theme.play();
-}
 
 if(poster != null)
 {
