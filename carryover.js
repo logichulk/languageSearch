@@ -87,6 +87,6 @@ if(poster != null)
      for(var i = 3; i >= 1; i --)
      {
           const id = "p" + i.toString();
-          setTimeout(function(){ changeImg(id); }, (3 - i) * 3000);
+          setTimeout(function(){ changeImg(id); }, (4 - i) * 3000);
      }
 }
